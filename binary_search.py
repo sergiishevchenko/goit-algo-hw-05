@@ -1,7 +1,6 @@
 def binary_search(array, target):
     left, right = 0, len(array) - 1
     iterations = 0
-    upper_bound = None
 
     while left <= right:
         avg = (left + right) // 2
@@ -11,12 +10,11 @@ def binary_search(array, target):
         if avg_value < target:
             left = avg + 1
         elif avg_value > target:
-            upper_bound = avg_value
             right = avg - 1
         else:
-            upper_bound = avg_value
-            break
+            return iterations, avg_value
 
+    upper_bound = array[left] if left < len(array) else None
     return iterations, upper_bound
 
 
